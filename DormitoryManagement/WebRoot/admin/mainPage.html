@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>管理界面</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="../style/style.css" rel="stylesheet" type="text/css" />
+		<script type="../text/javascript" src="style/js.js"></script>
+		<script src="../style/Clock.js" type=text/javascript></script>
+		<script language="javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript">
+		    $(function(){
+		      $.post("check2.action","",
+		//用jQuery来获取异步数据
+		function(data){
+			$("#name").html("<span style='color:red'>"+decodeURI(data)+"</span>");
+		}
+	);
+		        
+		    });
+		</script>
+		<script>
+	      setInterval("linkweb.innerHTML=new Clock()", 1000);
+        </script>
+	</head>
+
+<body id="index">
+<h1>学生公寓管理系统&nbsp;&nbsp;欢迎&nbsp;<font  id="name"></font>&nbsp;使用</h1>
+
+<div id="userInfo"><span id="linkweb"></span>
+</div>
+<ul id="globalNav">
+	<h2 style="color:#102b6a">管理菜单</h2>
+	<li><a href="stuAction1" target="frameBord" style="background-image:url(../style/gif-0734.gif);background-position:10px;background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学生信息管理</a></li>
+	<li><a href="apAction1" target="frameBord" style="background-image:url(../style/gif-0658.gif);background-position:10px;background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公寓信息管理</a></li>
+	<li><a href="rAction1" target="frameBord" style="background-image:url(../style/gif-0660.gif);background-position:10px;background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房间信息管理</a></li>
+	<li><a href="visAction1" target="frameBord" style="background-image:url(../style/gif-0737.gif);background-position:10px;background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来访信息管理</a></li>
+	<li><a href="goodsAction1" target="frameBord" style="background-image:url(../style/gif-0283.gif);background-position:10px;background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;物品出入管理</a></li>
+	<li><a href="healthAction1" target="frameBord" style="background-image:url(../style/gif-0161.gif);background-position:10px;background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;卫生信息管理</a></li>
+	<li><a href="stubaseAction1" target="frameBord" style="background-image:url(../style/gif-0034.gif);background-position:10px;background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;住宿信息管理</a></li>
+	<li><a href="manAction1" target="frameBord" style="background-image:url(../style/gif-0740.gif);background-position:10px;background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理员管理</a></li>
+	<li><a href="search.jsp" target="frameBord" style="background-image:url(../style/gif-0307.gif);background-position:10px;background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特定信息查询</a></li>
+	<li><a href="../common/index.jsp" target="frameBord">首页</a></li>
+	<li><a href="admin_loginOut.action">安全退出</a></li>
+	
+</ul>
+<iframe id="frameBord" name="frameBord" frameborder="0" width="100%" height="100%" src="../common/index.jsp"></iframe>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="admin" extends="struts-default">
+	    
+	    <!-- 判断用户登录拦截器 -->
+		<interceptors>
+			<interceptor name="Authentication" class="com.interceptor.AdminInterceptor" />
+		</interceptors>
+        
+        <!-- 管理员登录 -->
+		<action name="admin_*" method="{1}" class="com.action.admin.AdminAction">
+			<result name="success">../admin/mainPage.html</result>
+			<result name="loginOut" type="redirect">admin/login.jsp</result>
+			<result name="error">../common/error.jsp</result>
+		</action>
+        
+        <!-- 管理员信息 查询-->
+        <action name="manAction1" class="com.action.admin.ManagerAction"
+			method="find">
+			<interceptor-ref name="Authentication">
+			</interceptor-ref>
+			<result name="input">../common/errorIndex.jsp</result>
+			<result name="power">../common/errorPower.jsp</result>
+			<result name="success">../admin/pageManager.jsp</result>
+		</action>
+		<action name="manAction" class="com.action.admin.ManagerAction"
+			method="find">
+			<result name="input">common/errorIndex.jsp</result>
+			<result name="success">admin/pageManager.jsp</result>
+		</action>
+		
+		<!-- 管理员信息操作 -->
+		<action name="man_*" method="{1}" class="com.action.admin.ManagerAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">manAction</param>
+			</result>
+			<result name="edit">admin/updateManager.jsp</result>
+			<result name="error">common/error.jsp</result>
+		</action>
+
+
+       <!-- 学生信息查询 -->
+		<action name="stuAction1" class="com.action.admin.StudentAction"
+			method="find">
+			<interceptor-ref name="Authentication">
+			</interceptor-ref>
+			<result name="success">../admin/pageStudent.jsp</result>
+			<result name="input">../common/errorIndex.jsp</result>
+		</action>
+		<action name="stuAction" class="com.action.admin.StudentAction"
+			method="find">
+			<result name="success">admin/pageStudent.jsp</result>
+			<result name="input">common/errorIndex.jsp</result>
+		</action>
+		<action  name="findStu" class="com.action.admin.StudentAction" method="findByNum">
+		    <result name="detail">../admin/StudentDetail.jsp</result>
+		</action>
+		
+		<!-- 学生信息操作 -->
+		<action name="stu_*" method="{1}" class="com.action.admin.StudentAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">stuAction</param>
+			</result>
+			<result name="edit">admin/updateStudent.jsp</result>
+			<result name="detail">admin/StudentDetail.jsp</result>
+			<result name="error">common/error.jsp</result>
+    	</action>
+
+
+        <!-- 出入物品信息操作-->
+		<action name="goods_*" method="{1}" class="com.action.admin.GoodsAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">goodsAction</param>
+			</result>
+			<result name="edit">admin/updateGoods.jsp</result>
+			<result name="error">common/error.jsp</result>
+		</action>
+		
+		 <!-- 出入物品信息查询 -->
+		<action name="goodsAction1" class="com.action.admin.GoodsAction"
+			method="find">
+			<interceptor-ref name="Authentication">
+			</interceptor-ref>
+			<result name="success">../admin/pageGoods.jsp</result>
+			<result name="input">../common/errorIndex.jsp</result>
+		</action>
+		<action name="goodsAction" class="com.action.admin.GoodsAction"
+			method="find">
+			<result name="success">admin/pageGoods.jsp</result>
+			<result name="input">common/errorIndex.jsp</result>
+		</action>
+
+       <!--来访者信息操作-->
+		<action name="vis_*" method="{1}" class="com.action.admin.VisitAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">visAction</param>
+			</result>
+			<result name="edit">admin/updateVisit.jsp</result>
+			<result name="error">common/error.jsp</result>
+			<result name="input">common/errorIndex.jsp</result>
+		</action>
+		
+		 <!--来访者信息查询-->
+		<action name="visAction1" class="com.action.admin.VisitAction" method="find">
+			<interceptor-ref name="Authentication">
+			</interceptor-ref>
+			<result name="success">../admin/pageVisit.jsp</result>
+			<result name="input">../common/errorIndex.jsp</result>
+		</action>
+		<action name="visAction" class="com.action.admin.VisitAction"
+			method="find">
+			<result name="success">admin/pageVisit.jsp</result>
+			<result name="input">common/errorIndex.jsp</result>
+		</action>
+
+
+        <!--公寓信息查询-->
+		<action name="ap_*" method="{1}" class="com.action.admin.ApartmentAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">apAction</param>
+			</result>
+			<result name="edit">admin/updateApartment.jsp</result>
+			<result name="error">common/error.jsp</result>
+			<result name="input">common/errorIndex.jsp</result>
+		</action>
+		
+		<!--增加公寓-->
+		<action name="addApartment" method="addAp" class="com.action.admin.ApartmentAction">
+			<result name="success">admin/addApartment.jsp</result>
+		</action>
+		
+		<!--公寓信息操作-->
+		<action name="apAction1" class="com.action.admin.ApartmentAction"
+			method="find">
+			<interceptor-ref name="Authentication">
+			</interceptor-ref>
+			<result name="success">../admin/pageApartment.jsp</result>
+			<result name="input">../common/errorIndex.jsp</result>
+		</action>
+		<action name="apAction" class="com.action.admin.ApartmentAction"
+			method="find">
+			<result name="success">admin/pageApartment.jsp</result>
+			<result name="input">common/errorIndex.jsp</result>
+		</action>
+
+       
+         <!--房间信息操作-->
+		<action name="r_*" method="{1}" class="com.action.admin.RoomAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">rAction</param>
+			</result>
+			<result name="edit">admin/updateRoom.jsp</result>
+			<result name="error">common/error.jsp</result>
+			<result name="input">common/errorIndex.jsp</result>
+		</action>
+		
+		<!--增加房间-->
+		<action name="addRoom" method="addRoom" class="com.action.admin.RoomAction">
+			<result name="success">admin/addRoom.jsp</result>
+		</action>
+		
+		 <!--房间信息查询-->
+		<action name="rAction1" class="com.action.admin.RoomAction" method="find">
+			<interceptor-ref name="Authentication">
+			</interceptor-ref>
+			<result name="input">../common/errorIndex.jsp</result>
+			<result name="success">../admin/pageRoom.jsp</result>
+		</action>
+		<action name="rAction" class="com.action.admin.RoomAction" method="find">
+			<result name="input">common/errorIndex.jsp</result>
+			<result name="success">admin/pageRoom.jsp</result>
+		</action>
+
+        
+         <!--卫生信息查询-->
+		<action name="health_*" method="{1}" class="com.action.admin.HealthAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">healthAction</param>
+			</result>
+			<result name="edit">admin/updateHealth.jsp</result>
+			<result name="error">common/error.jsp</result>
+			<result name="input">common/errorIndex.jsp</result>
+		</action>
+		
+		 <!--增加寝室卫生信息-->
+		<action name="addHealth" method="addHealth" class="com.action.admin.HealthAction">
+			<result name="success">admin/addHealth.jsp</result>
+		</action>
+		
+		 <!--卫生信息操作-->
+		<action name="healthAction1" class="com.action.admin.HealthAction"
+			method="find">
+			<interceptor-ref name="Authentication">
+			</interceptor-ref>
+			<result name="input">../common/errorIndex.jsp</result>
+			<result name="success">../admin/pageHealth.jsp</result>
+		</action>
+		<action name="healthAction" class="com.action.admin.HealthAction"
+			method="find">
+			<result name="input">common/errorIndex.jsp</result>
+			<result name="success">admin/pageHealth.jsp</result>
+		</action>
+
+       
+         <!--学生入住操作-->
+		<action name="stubase_*" method="{1}" class="com.action.admin.StubaseAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">stubaseAction</param>
+			</result>
+			<result name="edit">admin/updateStubase.jsp</result>
+			<result name="error">common/error.jsp</result>
+			<result name="input">common/errorIndex.jsp</result>
+		</action>
+		
+		 <!--学生住宿信息查询-->
+		<action name="stubaseAction1" class="com.action.admin.StubaseAction"
+			method="find">
+			<interceptor-ref name="Authentication">
+			</interceptor-ref>
+			<result name="input">../common/errorIndex.jsp</result>
+			<result name="success">../admin/pageStubase.jsp</result>
+		</action>
+		<action name="stubaseAction" class="com.action.admin.StubaseAction"
+			method="find">
+			<result name="input">common/errorIndex.jsp</result>
+			<result name="success">admin/pageStubase.jsp</result>
+		</action>
+
+
+
+
+	</package>
+
+
+
+</struts>
