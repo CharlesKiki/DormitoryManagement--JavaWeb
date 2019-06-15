@@ -8,6 +8,7 @@
 	<constant name="struts.locale" value="zh_CN" />
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 	<package name="user" extends="struts-default">
+		<!-- 注意这个拦截器，它被其他Action所调用 -->
 	    <interceptors>
 			<interceptor name="Userentication" class="com.interceptor.UserInterceptor" />
 		</interceptors>

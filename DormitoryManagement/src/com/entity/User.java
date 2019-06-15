@@ -2,6 +2,7 @@ package com.entity;
 
 /**
  * User entity. @author MyEclipse Persistence Tools
+ * 用于封装表单中的数据
  */
 
 public class User implements java.io.Serializable {
