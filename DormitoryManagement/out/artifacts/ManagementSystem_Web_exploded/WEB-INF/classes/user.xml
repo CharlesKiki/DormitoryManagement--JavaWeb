@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 指定国际化配置文件 -->
+	<constant name="struts.custom.i18n.resources" value="validationMessages" />
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<package name="user" extends="struts-default">
+		<!-- 注意这个拦截器，它被其他Action所调用 -->
+	    <interceptors>
+			<interceptor name="Userentication" class="com.interceptor.UserInterceptor" />
+		</interceptors>
+		
+		 <!--学生登录-->
+		<action name="user_*" method="{1}" class="com.action.user.UserAction">
+			<result name="success">/user/mainPage.html</result>
+			<result name="loginOut" type="redirect">/user/login.jsp</result>
+			<result name="error">/common/error.jsp</result>
+		</action>
+		
+		 <!--学生详细信息查询-->
+        <action name="_stuAction" method="edit" class="com.action.user.StuInfoAction">
+		     <interceptor-ref name="Userentication">
+			  </interceptor-ref>
+		     <result name="edit">../user/StudentDetail.jsp</result>
+		</action>
+			
+		 <!--学生来访信息查询-->
+		<action name="_visAction" method="find" class="com.action.user.VisInfoAction">
+		     <interceptor-ref name="Userentication">
+			  </interceptor-ref>
+		     <result name="success">../user/pageVisit.jsp</result>
+		</action>
+		
+		 <!--学生带入带出物品信息查询-->
+		<action name="_goodsAction" method="find" class="com.action.user.GoodsInfoAction">
+		     <interceptor-ref name="Userentication">
+			  </interceptor-ref>
+		     <result name="success">../user/pageGoods.jsp</result>
+		</action>
+		
+		 <!--学生寝室卫生查询-->
+		<action name="_healthAction" method="find" class="com.action.user.HealthInfoAction">
+		     <interceptor-ref name="Userentication">
+			  </interceptor-ref>
+		     <result name="success">../user/pageHealth.jsp</result>
+		</action>
+		
+		 <!--更新登录信息-->
+		<action name="_userAction" method="edit" class="com.action.user.UserInfoAction">
+		     <interceptor-ref name="Userentication">
+			  </interceptor-ref>
+		     <result name="edit">../user/updateUser.jsp</result>
+		</action>
+		<action name="userUpdate" method="update" class="com.action.user.UserInfoAction">
+		     <interceptor-ref name="Userentication">
+		    	</interceptor-ref>
+		     <result name="success">user/success.jsp </result>
+		     <result name="error">common/error.jsp</result>
+		     <result name="input">common/errorIndex.jsp</result>
+		</action>
+	</package>
+
+
+
+</struts>

@@ -1,0 +1,31 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ManagementSystem:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ManagementSystem_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ManagementSystem/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ManagementSystem" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="mysql-connector-java-5.1.18-bin.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="dom4j-1.6.1.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="antlr-2.7.6.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="cglib-2.2.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="commons-collections-3.1.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="ehcache-1.2.3.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="ejb3-persistence.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="hibernate-annotations.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="hibernate-commons-annotations.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="hibernate-entitymanager.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="hibernate-validator.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="hibernate3.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="jta-1.1.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="log4j-1.2.14.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="slf4j-api-1.5.8.jar" module-name="ManagementSystem" />
+          <element id="library" level="module" name="slf4j-log4j12-1.5.8.jar" module-name="ManagementSystem" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

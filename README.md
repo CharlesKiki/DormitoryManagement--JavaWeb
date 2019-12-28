@@ -7,7 +7,7 @@ AJAX动态刷新和jQuery-validate验证框架。
 
 ### 开发环境
 
-JDK,Eclipse,tomcat,Mysql.
+~~JDK,Eclipse~~,tomcat,Mysql.Idea
 
 有部分框架源码被同时加入项目了：
 ``` nginx
@@ -25,12 +25,16 @@ Gradle自动化构建，包管理
 
 默认UTF-8编码
 
+### 项目依赖
 
+------
 
+依赖位于\WebRoot\WEB-INF\lib
 
+### 如何启动
 
+------
 
-
-
+IDEA启动后编译会自动打开
 
 

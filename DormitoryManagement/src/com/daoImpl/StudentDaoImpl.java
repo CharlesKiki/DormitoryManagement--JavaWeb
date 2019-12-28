@@ -1,17 +1,16 @@
 package com.daoImpl;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import com.dao.StudentDao;
 import com.entity.Stubase;
 import com.entity.Student;
 import com.entity.User;
 import com.tool.CommonDao;
 import com.util.HibernateUtil;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class StudentDaoImpl implements StudentDao {
 	private static final Log log = LogFactory.getLog(StudentDaoImpl .class);
